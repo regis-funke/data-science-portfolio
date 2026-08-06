@@ -35,7 +35,7 @@ visible and not just aggregate scores.
 with a constant number of sequentially executed operations, whereas a recurrent
 layer requires O(n).
 
-**Source:** attention-is-all-you-need.pdf, Table 1 / §4
+**Source:** Attention Is All You Need.pdf, Table 1 / §4 (page label 6)
 
 **Tests:** basic retrieval and citation. Passed under every configuration tried
 so far, so it functions as a smoke test rather than a discriminator.
@@ -51,7 +51,7 @@ attention?
 softmax into regions where it has extremely small gradients. Scaling counteracts
 this.
 
-**Source:** attention-is-all-you-need.pdf §3.2.1
+**Source:** Attention Is All You Need.pdf §3.2.1 (page label 4)
 
 **Tests:** whether the retrieved chunk carries the *justification* and not only
 the formula. Notation-dense passages tokenize badly, so this is a fair test of
@@ -185,6 +185,12 @@ allow partial answers, this question is what confirmed refusals still worked.
 ### Sweep, 2026-08-06 (`eval_results/eval_2026-08-06_1925.md`)
 
 All four configurations used gpt-4o-mini at temperature 0.
+
+Run against a 215-page corpus (863 chunks) in which *Attention Is All You Need*
+was the NeurIPS proceedings copy. That file was later replaced with the arXiv
+version, taking the corpus to 219 pages and 872 chunks. Page labels for Q1 and
+Q2 happen to be unchanged, so the grades below still stand, but any re-run will
+produce a fresh report rather than an identical one.
 
 | Q | base-1000-k4 | large-1500-k4 | base-1000-k7 | emb-large-1000-k4 |
 |---|---|---|---|---|
