@@ -21,13 +21,13 @@ INGESTION (offline, once)                       ingest.py
   data/*.pdf
       |
       v
-  PyPDFLoader ................ 215 Documents, one per page
+  pypdf ...................... 219 Documents, one per page
       |
       v
   clean .................. NFKC ligatures, rejoin hyphenated
       |                    line breaks, source -> filename
       v
-  RecursiveCharacterTextSplitter ....... 863 chunks, 1000/150
+  RecursiveCharacterTextSplitter ....... 872 chunks, 1000/150
       |
       v
   OpenAIEmbeddings ........... text-embedding-3-large
@@ -78,7 +78,7 @@ mine to redistribute. Download them into `data/`:
 
 ```bash
 mkdir -p data && cd data
-curl -L -o "attention-is-all-you-need.pdf"                    https://arxiv.org/pdf/1706.03762
+curl -L -o "Attention Is All You Need.pdf"                    https://arxiv.org/pdf/1706.03762
 curl -L -o "BERT- Pre-training of Deep Bidirectional Transformers for Language Understanding.pdf" \
                                                               https://arxiv.org/pdf/1810.04805
 curl -L -o "Language Models are Few-Shot Learners.pdf"        https://arxiv.org/pdf/2005.14165
@@ -95,10 +95,10 @@ Filenames are what the model cites, so they are worth keeping readable — these
 are the ones that produced the results below. Any set of PDFs works; the eval
 set in `eval_questions.md` is specific to these six.
 
-One caveat on reproducing the exact numbers: the *Attention Is All You Need*
-copy used here was the NeurIPS proceedings version, not the arXiv one. They are
-typeset differently, so page labels and chunk boundaries shift slightly. The
-answers should not change; the cited page numbers may.
+All six are the arXiv versions, which is what the numbers below were produced
+from. Publisher copies of the same paper are typeset differently — swapping one
+in changes the page count, the chunk count and the cited page numbers, though
+not the answers.
 
 ### Run it
 
