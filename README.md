@@ -71,7 +71,38 @@ pip install -r requirements.txt
 echo "OPENAI_API_KEY=sk-..." > .env      # never committed
 ```
 
-Put PDFs in `data/`, then:
+### Get the papers
+
+`data/` is gitignored — the PDFs are freely available from arXiv but are not
+mine to redistribute. Download them into `data/`:
+
+```bash
+mkdir -p data && cd data
+curl -L -o "attention-is-all-you-need.pdf"                    https://arxiv.org/pdf/1706.03762
+curl -L -o "BERT- Pre-training of Deep Bidirectional Transformers for Language Understanding.pdf" \
+                                                              https://arxiv.org/pdf/1810.04805
+curl -L -o "Language Models are Few-Shot Learners.pdf"        https://arxiv.org/pdf/2005.14165
+curl -L -o "Training language models to follow instructions with human feedback.pdf" \
+                                                              https://arxiv.org/pdf/2203.02155
+curl -L -o "LORA- LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS.pdf" \
+                                                              https://arxiv.org/pdf/2106.09685
+curl -L -o "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks.pdf" \
+                                                              https://arxiv.org/pdf/2005.11401
+cd ..
+```
+
+Filenames are what the model cites, so they are worth keeping readable — these
+are the ones that produced the results below. Any set of PDFs works; the eval
+set in `eval_questions.md` is specific to these six.
+
+One caveat on reproducing the exact numbers: the *Attention Is All You Need*
+copy used here was the NeurIPS proceedings version, not the arXiv one. They are
+typeset differently, so page labels and chunk boundaries shift slightly. The
+answers should not change; the cited page numbers may.
+
+### Run it
+
+Then:
 
 ```bash
 python src/ingest.py     # build the vector store (~1 min, a few cents)
