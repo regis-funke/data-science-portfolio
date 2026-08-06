@@ -35,8 +35,12 @@ CHROMA_DIR = REPO_ROOT / "chroma_db"
 # text-embedding-3-large after the eval sweep: it scored 10/10 where the -small
 # store scored 7/10 at the same chunk size and k. It was the highest-leverage
 # variable by a distance - larger than chunk size or k, which neither fixed the
-# two failures it fixed. Costs ~6.5x more to embed (cents, once) and returns
-# 3072-dimensional vectors, so retrieval is marginally slower.
+# two failures it fixed. It also halved the pipeline's sensitivity to how a
+# question is worded: a vague query that -small answered by ranking a title page
+# first is ranked correctly by -large, unrewritten.
+#
+# Costs ~6.5x more to embed (cents, once) and returns 3072-dimensional vectors,
+# so retrieval is marginally slower and the store is larger on disk.
 EMBEDDING_MODEL = "text-embedding-3-large"
 
 # Chunk size trades retrieval precision against context completeness. Smaller

@@ -241,10 +241,28 @@ is why the harness records them — is what catches this.
 naming two topics lands nearest one of them. This is the concrete argument for
 multi-query retrieval, still untested.
 
+**Better embeddings reduced sensitivity to question phrasing.** During Phase 2 a
+deliberately vague query — "what problem does attention solve?" — ranked the
+paper's title and author block above the passage that answered it, with a 3.2%
+relative spread across the top four hits: an ordering barely distinguishable
+from noise. Rephrasing the question in the paper's own vocabulary fixed it, and
+the conclusion at the time was that the query, not the index, was at fault.
+
+Re-running the same unrewritten query against the `-large` store ranks the
+answering chunk **first**, with the title block absent from the top four and the
+relative spread at 7.4%. So the original conclusion was only half right. Query
+phrasing and embedding quality are two ways of closing the same gap, and the
+cheap diagnosis — "your question was vague" — hid a fixable weakness in the
+index. Worth remembering as a bias: the variable already under examination is
+not necessarily the one that matters.
+
+(Spreads are quoted relative to the top score. Two embedding models occupy
+different vector spaces, so their absolute distances cannot be compared.)
+
 ### Still untested
 
-- Multi-query / HyDE query rewriting (motivated by Q6, and by vague queries
-  ranking poorly during Phase 2)
+- Multi-query / HyDE query rewriting (motivated by Q6; the phrasing argument for
+  it is weaker now that `-large` handles vague queries)
 - Filtering bibliography chunks — deliberately *not* filtering figure captions,
   which supplied the Q3 answer
 - A larger LLM; every run above used gpt-4o-mini

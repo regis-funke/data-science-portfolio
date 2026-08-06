@@ -131,7 +131,16 @@ def preview(query, db, k=DEFAULT_K, mmr=False, fetch_k=30, lambda_mult=0.8, char
 
     Watch the spread between the best and worst score more than the absolute
     values. A flat spread means the index cannot tell rank 1 from rank 4 and the
-    ordering is close to noise - usually a sign of a vague query.
+    ordering is close to noise.
+
+    Compare spreads relative to the top score, never in absolute terms: two
+    embedding models occupy different spaces and their raw distances are not
+    comparable. Measured on "what problem does attention solve?", a deliberately
+    vague query: text-embedding-3-small gave a 3.2% relative spread and ranked
+    the paper's title page above the answer, while -large gave 7.4% and ranked
+    the answering chunk first. A flat spread therefore indicts the query and the
+    embedding model together - rephrasing is the cheap fix to try first, but it
+    is not always the real one.
 
     Args:
         chars: characters of each chunk to print; 0 prints the chunk in full,
