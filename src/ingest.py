@@ -14,10 +14,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
-from langchain_community.document_loaders import PyPDFLoader
 from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from pypdf import PdfReader
 
 # Reads OPENAI_API_KEY from .env into the environment. The OpenAI clients below
 # pick it up implicitly, so the key never appears in this file.
@@ -78,7 +78,19 @@ def timed(label):
 def load_documents():
     """Load every PDF in data/ as one Document per page.
 
-    Sorted so the ingestion order is deterministic across runs.
+    Reads pypdf directly rather than using langchain-community's PyPDFLoader.
+    That package was sunset in May 2026 and its repository archived; LangChain's
+    own guidance is to use dedicated packages or implement loading in
+    application code. This is the latter, and it is about ten lines - pypdf was
+    already a dependency, since PyPDFLoader wrapped it and called the same
+    extract_text() underneath.
+
+    Metadata carries the keys the rest of the pipeline uses: `source` (replaced
+    with the bare filename in clean_documents) and `page_label`, which is the
+    label printed on the page and can differ from the index when a paper has
+    front matter.
+
+    Files are sorted so ingestion order is deterministic across runs.
     """
     pdfs = sorted(DATA_DIR.glob("*.pdf"))
     if not pdfs:
@@ -86,9 +98,25 @@ def load_documents():
 
     docs = []
     for pdf in pdfs:
-        loader = PyPDFLoader(str(pdf))
-        docs.extend(loader.load())  # one Document per page, not per file
-    return docs
+        reader = PdfReader(str(pdf))
+        try:
+            labels = reader.page_labels
+        except Exception:  # not every PDF declares a page-label tree
+            labels = None
+
+        for index, page in enumerate(reader.pages):
+            docs.append(
+                Document(
+                    page_content=page.extract_text() or "",
+                    metadata={
+                        "source": str(pdf),
+                        "page": index,
+                        "page_label": (labels[index] if labels else str(index + 1)),
+                        "total_pages": len(reader.pages),
+                    },
+                )
+            )
+    return docs  # one Document per page, not per file
 
 
 def clean_documents(docs):
