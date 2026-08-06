@@ -31,7 +31,13 @@ CHROMA_DIR = REPO_ROOT / "chroma_db"
 
 # Must match EMBEDDING_MODEL in query.py: a store built with one model can only
 # be searched with the same model, since the vectors live in its space.
-EMBEDDING_MODEL = "text-embedding-3-small"
+#
+# text-embedding-3-large after the eval sweep: it scored 10/10 where the -small
+# store scored 7/10 at the same chunk size and k. It was the highest-leverage
+# variable by a distance - larger than chunk size or k, which neither fixed the
+# two failures it fixed. Costs ~6.5x more to embed (cents, once) and returns
+# 3072-dimensional vectors, so retrieval is marginally slower.
+EMBEDDING_MODEL = "text-embedding-3-large"
 
 # Chunk size trades retrieval precision against context completeness. Smaller
 # chunks isolate a fact more sharply; larger ones keep an explanation intact.

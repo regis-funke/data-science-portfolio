@@ -41,6 +41,10 @@ RESULTS_DIR = REPO_ROOT / "eval_results"
 # Only vary one axis at a time. Comparing 600/k=4 against 1000/k=7 confounds
 # granularity with total context volume (k x chunk_size), and the result cannot
 # be attributed to either.
+#
+# These four are the sweep of 2026-08-06, kept so the result is reproducible.
+# emb-large-1000-k4 won 10/10 and is now the default in ingest.py and query.py;
+# see the Results section of eval_questions.md.
 CONFIGS = [
     {
         "name": "base-1000-k4",

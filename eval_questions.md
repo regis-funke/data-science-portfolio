@@ -182,22 +182,69 @@ allow partial answers, this question is what confirmed refusals still worked.
 
 ## Results
 
-Record one table per configuration.
+### Sweep, 2026-08-06 (`eval_results/eval_2026-08-06_1925.md`)
 
-### 1000/150, k=4, text-embedding-3-small, gpt-4o-mini
+All four configurations used gpt-4o-mini at temperature 0.
 
-| Q | Grade | Note |
-|---|---|---|
-| Q1 | pass | |
-| Q2 | | |
-| Q3 | pass | names MLM and NSP |
-| Q4 | | |
-| Q5 | pass | names both tasks, states remaining gap |
-| Q6 | | |
-| Q7 | | |
-| Q8 | | |
-| Q9 | | |
-| Q10 | pass | refuses |
+| Q | base-1000-k4 | large-1500-k4 | base-1000-k7 | emb-large-1000-k4 |
+|---|---|---|---|---|
+| Q1 | pass | pass | pass | pass |
+| Q2 | pass | pass | pass | pass |
+| Q3 | fail | partial | fail | **pass** |
+| Q4 | fail | pass | fail | **pass** |
+| Q5 | pass | partial | pass | pass |
+| Q6 | partial | partial | pass | pass |
+| Q7 | pass | pass | pass | pass |
+| Q8 | pass | pass | pass | pass |
+| Q9 | pass | pass | pass | pass |
+| Q10 | pass | pass | pass | pass |
+| **pass / partial / fail** | 7 / 1 / 2 | 7 / 3 / 0 | 8 / 0 / 2 | **10 / 0 / 0** |
 
-Blank rows are not yet run — Q1, Q3, Q5 and Q10 are carried over from the
-earlier three-question set.
+| config | retrieval | generation | context chars |
+|---|---|---|---|
+| base-1000-k4 | 0.18s | 1.46s | 3,535 |
+| large-1500-k4 | 0.18s | 1.30s | 5,034 |
+| base-1000-k7 | 0.23s | 1.52s | 6,250 |
+| emb-large-1000-k4 | 0.23s | 1.30s | 3,644 |
+
+**Adopted: 1000/150, k=4, text-embedding-3-large.**
+
+### What the sweep showed
+
+**The embedding model mattered more than anything else tested.** Switching from
+`text-embedding-3-small` to `-large` at identical chunk size and k took the score
+from 7/10 to 10/10, fixing both failures that chunk size and k could not. It is
+also the cheapest configuration to generate with — fewer context characters than
+k=7 and the fastest mean generation time. Chunk size and k had absorbed far more
+tuning effort for far less return.
+
+**More context is not better retrieval.** At k=7 the model still failed Q3 and
+Q4. On Q4 it answered with BERT's 80/10/10 mask-replacement split rather than the
+15% masking rate under both k=4 and k=7, because the wrong passage ranked first
+in each. Seven chunks did not help; better ranking did.
+
+**Refusal tests do not prove groundedness.** Q9 and Q10 passed under every
+configuration, yet two configurations leaked unsourced facts elsewhere:
+
+- Q6, base-1000-k4 and large-1500-k4: both asserted that BERT fine-tuning updates
+  all parameters while retrieving **no BERT chunk at all**. The claim came from
+  the model's own knowledge and sat next to a citation to a different paper.
+- Q3, large-1500-k4: named MLM and NSP while stating in the same answer that the
+  context "does not explicitly name them."
+
+A refusal test only catches leakage when the model knows it has nothing. It
+misses the more dangerous case: topically adjacent context, with the gap quietly
+filled from pre-training. Grading answers against the retrieved sources — which
+is why the harness records them — is what catches this.
+
+**No configuration retrieved from both documents on Q6.** A single query vector
+naming two topics lands nearest one of them. This is the concrete argument for
+multi-query retrieval, still untested.
+
+### Still untested
+
+- Multi-query / HyDE query rewriting (motivated by Q6, and by vague queries
+  ranking poorly during Phase 2)
+- Filtering bibliography chunks — deliberately *not* filtering figure captions,
+  which supplied the Q3 answer
+- A larger LLM; every run above used gpt-4o-mini

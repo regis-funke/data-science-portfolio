@@ -27,12 +27,15 @@ CHROMA_DIR = REPO_ROOT / "chroma_db"
 
 # Must match EMBEDDING_MODEL in ingest.py - the question is embedded at query
 # time and compared against vectors built at ingestion time, so both have to
-# live in the same vector space.
-EMBEDDING_MODEL = "text-embedding-3-small"
+# live in the same vector space. See the note there for why -large.
+EMBEDDING_MODEL = "text-embedding-3-large"
 LLM_MODEL = "gpt-4o-mini"
 
-# How many chunks to retrieve. Measured on this corpus: raising k from 4 to 6
-# added only near-duplicate chunks and no new information, so 4 it is.
+# How many chunks to retrieve. Measured twice on this corpus: k=6 added only
+# near-duplicate chunks, and k=7 scored no better than k=4 across the full eval
+# set while sending 76% more context. More context is not better retrieval - at
+# k=7 the model still answered two questions wrong, because the wrong chunk was
+# still ranked first.
 DEFAULT_K = 4
 
 # The groundedness prompt - the main defence against hallucination.
