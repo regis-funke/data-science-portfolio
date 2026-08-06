@@ -51,7 +51,7 @@ def clean_documents(docs):
         cleaned.append(Document(page_content=text, metadata=metadata))
     return cleaned
 
-def chunk_documents(docs, chunk_size=1000, chunk_overlap=150):
+def chunk_documents(docs, chunk_size=600, chunk_overlap=150):
     """Split page-level Documents into overlapping chunks. Metadata is carried over."""
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=chunk_size,
