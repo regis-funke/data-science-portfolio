@@ -23,14 +23,10 @@ The Jupyter Notebook, which is the centerpiece of this repository, is meticulous
 - **Custom Dataset Handling**: Creation of a custom dataset class for processing depth maps to match the model's output size.
 - **In-depth Annotations**: Each code block is accompanied by detailed comments and explanations to elucidate the workflow.
 
-## Running the Notebook
-
-To replicate or build upon this project:
-
-1. Clone the repository.
-2. Ensure all dependencies are installed.
-3. Run the Jupyter Notebook to observe the fine-tuning process.
-
 ## Conclusion
 
 This project not only aimed at achieving effective fine-tuning of the DPT model but also served as an insightful exploration into Transformer models. I invite fellow enthusiasts and researchers to explore, critique, and build upon this work.
+
+---
+
+[← Portfolio index](../README.md)

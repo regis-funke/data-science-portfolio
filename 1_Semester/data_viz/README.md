@@ -42,18 +42,13 @@ Data obtained from [DESTATIS](https://www-genesis.destatis.de/genesis/online).
 
 ## General Information
 
-### Installation and Usage
-For each project, ensure R is installed with necessary packages as listed in their respective sections. Follow the instructions in each project's directory to run the analysis and view visualizations.
-
-### Contributing
-Contributions to enhance either of the projects are welcome. Please fork the repository and submit a pull request for review.
-
-### License
-Both projects are open-source, available under standard open-source licenses.
-
 ### Contact and Acknowledgements
 Each project contains specific contact details and acknowledgements to respective data sources and contributors.
 
 ---
 
 For detailed information on each project, refer to their individual README files in their respective directories.
+
+---
+
+[← Portfolio index](../../README.md)

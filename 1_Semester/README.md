@@ -38,24 +38,6 @@ This directory contains a collection of projects and exercises completed in the 
    - Demonstrations of programming tools in data science.
    - Focus on Python programming and data manipulation.
 
-## Installation and Usage
-
-- Clone the repository to access the coursework materials.
-- Ensure the appropriate programming environment (R/Python) is set up with necessary libraries and dependencies.
-- Follow instructions in individual project folders to run and analyze each project.
-
-## Contributing
-
-Contributions to enhance or extend the projects are welcome. Please fork the repository and submit a pull request for review.
-
-## Acknowledgements
-
-Special thanks to the course instructors and data providers for the resources and datasets used in these projects.
-
-## License
-
-This coursework is open-source and available under standard open-source licenses.
-
 ---
 
-For more detailed information and specific analyses, refer to the README files and content within each project's subdirectory.
+[← Portfolio index](../README.md)

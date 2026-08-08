@@ -25,11 +25,12 @@ This repository hosts two major projects from a Data Science coursework, focusin
 - **Data Source**: [Saaleaue weather station](https://www.bgc-jena.mpg.de/wetter/).
 - **Technologies Used**: Python, Pandas, Scikit-learn, Plotly Express, Numpy.
 - **Installation**: Clone the repository and ensure the necessary Python libraries are installed.
-- **Acknowledgements**: Thanks to the Halle Tourist-Information and the providers of the weather station data.
+- **Data source**:  Halle Tourist-Information and the providers of the weather station data.
 
 ## General Information
 
-- **License**: Both projects are open-source and available under standard open-source licenses.
-- **Usage**: To replicate the analysis, clone the repository, install necessary Python libraries, and run the provided Jupyter Notebooks or Python scripts.
-
 For detailed information on each project, please refer to the specific README files in their respective directories.
+
+---
+
+[← Portfolio index](../../README.md)

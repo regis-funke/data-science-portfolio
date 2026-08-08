@@ -29,10 +29,6 @@ The project involves multiple exercises:
 - Plotly Express for data visualization
 - Timeit for performance measurement
 
-## Installation and Usage
-1. Ensure Python is installed along with Pandas, Numpy, MLxtend, and Plotly Express.
-2. Clone the repository to your local machine.
-3. Execute the Jupyter Notebooks to replicate the analysis.
+---
 
-## License
-This project is open-source and available under standard open-source licenses.
+[← Portfolio index](../../../README.md)

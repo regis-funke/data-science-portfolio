@@ -52,16 +52,6 @@ The project is structured into multiple exercises, each tackling a specific aspe
 - Kneed
 - Yellowbrick
 
-## Installation and Usage
-1. Ensure Python is installed with the necessary libraries (Pandas, Matplotlib, Plotly Express, Scikit-learn, Kneed, Yellowbrick).
-2. Clone the repository to your local machine.
-3. Execute the Jupyter Notebook or Python scripts to replicate the analysis.
+---
 
-## Contributing
-Contributions to this project are welcome. Please fork the repository and submit a pull request for any enhancements.
-
-## License
-This project is open-source and available under standard open-source licenses.
-
-## Acknowledgements
-Special thanks to the instructors and the course materials that provided the foundational knowledge for this analysis.
+[← Portfolio index](../../../README.md)

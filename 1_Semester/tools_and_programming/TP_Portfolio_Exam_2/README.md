@@ -85,12 +85,6 @@ The project uses two datasets:
 - Pandas for data manipulation
 - Plotly for data visualization
 
-## Installation and Usage
+---
 
-1. Ensure Python and necessary libraries (Pandas, Plotly) are installed.
-2. Clone the repository.
-3. Run the provided Python scripts or Jupyter Notebook to replicate the analysis.
-
-## License
-
-This project is open-source and available under standard open-source licenses.
+[← Portfolio index](../../../README.md)

@@ -37,10 +37,6 @@ This repository contains two machine learning projects focusing on image classif
 - Numpy
 - Sklearn
 
-## Installation and Usage
-- Clone the repository to access the projects.
-- Install required dependencies: PyTorch, PyTorch Lightning, Transformers, Torchvision, Numpy, Sklearn.
-- Run the Jupyter notebooks or Python scripts to train and evaluate the models.
+---
 
-## License
-These projects are open-source and available under standard open-source licenses.
+[← Portfolio index](../../README.md)

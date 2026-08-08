@@ -26,11 +26,6 @@ This project, as part of a data science coursework, involves analyzing text data
 - Python
 - Libraries: NumPy, Pandas, Requests, BeautifulSoup, Spacy, Matplotlib, WordCloud, NLTK, Gensim
 
-## Installation and Usage
-To replicate the analysis:
-1. Ensure Python and the required libraries are installed.
-2. Clone the repository containing this project.
-3. Run the Python scripts to perform the different exercises and analyses.
+---
 
-## License
-This project is open-source and available under standard open-source licenses. It is intended for educational purposes as part of a data science coursework.
+[← Portfolio index](../../../README.md)

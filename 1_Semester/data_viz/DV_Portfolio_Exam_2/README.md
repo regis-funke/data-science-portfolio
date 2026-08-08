@@ -35,10 +35,6 @@ After preparation in Python, the following CSV files are used in R for visualiza
 - `61111-0002_pct.csv`
 - `61111-0002_std.csv`
 
-## Usage
-
-Open the R Markdown file (`RF_DV_Portfolio_Exam_2.Rmd`) in RStudio and run it to view the analysis and visualizations. The file is structured to sequentially process and visualize the data, providing insights into the inflation trends and their implications on consumer spending.
-
 ## Key Insights
 
 - Historical trends in consumer price index since 1992.
@@ -50,14 +46,6 @@ Open the R Markdown file (`RF_DV_Portfolio_Exam_2.Rmd`) in RStudio and run it to
 
 The project concludes with insights on how rising inflation rates might affect different consumer groups, especially those with lower incomes. It also provides practical tips on managing expenses during times of inflation.
 
-## License
+---
 
-This project is open-source and available for use under standard open-source licenses.
-
-## Contact
-
-For any queries or suggestions, please reach out to [Your Contact Information].
-
-## Acknowledgements
-
-Special thanks to DESTATIS for providing the necessary data and resources that made this project possible.
+[← Portfolio index](../../../README.md)

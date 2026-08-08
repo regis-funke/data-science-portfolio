@@ -34,16 +34,10 @@ The project is structured into several phases, including data preparation, explo
 - Confusion matrix analysis to understand model predictions.
 - Suggestions for further improvements including incorporation of additional features and exploration of more complex models like neural networks.
 
-## Usage
-1. Ensure required Python libraries are installed.
-2. Download and extract the dataset from the provided link.
-3. Run the Jupyter Notebooks or Python scripts to replicate the analysis.
+## Data source
 
-## License
-This project is open-source and available under standard open-source licenses.
+UCI Machine Learning Repository.
 
-## Contact
-For any queries or suggestions related to this project, please reach out to [Your Contact Information].
+---
 
-## Acknowledgements
-Special thanks to the UCI Machine Learning Repository for providing the dataset and to the community for resources that supported the understanding of machine learning algorithms.
+[← Portfolio index](../../../README.md)

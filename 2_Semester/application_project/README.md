@@ -29,10 +29,6 @@ This project is focused on comparing the performance of different Optical Charac
 - Python
 - Libraries: Pandas, Matplotlib, Pillow, Pytesseract, EasyOCR, python-doctr, python-Levenshtein, Plotly, OpenCV
 
-## Installation and Usage
-- Ensure Python is installed with the necessary libraries.
-- Clone the repository and navigate to the project directory.
-- Run the Python scripts to replicate the analysis.
+---
 
-## License
-This project is open-source and available under standard open-source licenses.
+[← Portfolio index](../../README.md)

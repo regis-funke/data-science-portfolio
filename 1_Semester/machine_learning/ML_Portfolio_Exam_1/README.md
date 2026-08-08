@@ -41,13 +41,10 @@ This repository contains the implementation and analysis of various machine lear
 - Plotly Express
 - Scikit-Learn
 
-## Installation and Usage
-1. Ensure Python is installed along with Pandas, Plotly Express, and Scikit-Learn.
-2. Clone the repository to your local machine.
-3. Run the Jupyter Notebooks or Python scripts to view the analysis and results.
+## Data source
 
-## License
-This project is open-source and available under standard open-source licenses.
+The “Online Shoppers Purchasing Intention” dataset.
 
-## Acknowledgements
-Special thanks to the providers of the “Online Shoppers Purchasing Intention” dataset and the supportive community resources that guided the understanding of complex machine learning algorithms.
+---
+
+[← Portfolio index](../../../README.md)

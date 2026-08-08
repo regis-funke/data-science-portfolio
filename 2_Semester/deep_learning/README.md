@@ -32,11 +32,6 @@ This project extends prior work on analyzing anonymized bank customer data by de
 ### Technologies
 Python, Pandas, NumPy, Matplotlib, Plotly Express, PyTorch, ray.tune
 
-## Installation and Usage
-Both projects require Python and specific libraries. To replicate the analysis for either project:
-1. Ensure Python and all required libraries are installed.
-2. Clone the repository and navigate to the respective project directory.
-3. Execute the Python scripts or Jupyter notebooks as per the project requirements.
+---
 
-## License
-The projects in this directory are open-source and available under standard open-source licenses. They are intended for educational purposes as part of data science coursework.
+[← Portfolio index](../../README.md)

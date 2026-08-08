@@ -37,11 +37,6 @@ This project, part of a data science coursework, focuses on implementing and ana
 - Python
 - Libraries: Pandas, NumPy, Matplotlib, Plotly Express, scikit-learn, imbalanced-learn
 
-## Installation and Usage
-To replicate the analysis:
-1. Ensure Python is installed along with the required libraries.
-2. Clone the repository and navigate to the project directory.
-3. Run the Python scripts to perform the analysis.
+---
 
-## License
-This project is open-source and available under standard open-source licenses.
+[← Portfolio index](../../../README.md)

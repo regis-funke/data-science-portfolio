@@ -26,19 +26,24 @@ This project, a part of data science coursework, focuses on developing a neural 
 - Evaluation of the model's performance on the test set.
 - Comparison of neural network performance with previous machine learning models.
 
-### Results and Findings
-- Discussion on the performance improvement achieved by the neural network model compared to traditional machine learning approaches.
-- Insights on the impact of different neural network architectures and hyperparameters on model accuracy.
+### Results and findings
+
+Best balanced validation accuracy **0.766**, test accuracy **69.96%**.
+
+The network beat the previous best model on this data — an SVM — but the gain in
+balanced accuracy was **marginal**, and does not obviously justify the added
+complexity on a dataset of 1,000 rows. That is the honest conclusion of the
+project: a neural network was applicable here, not clearly warranted.
+
+Class weighting mattered more than architecture. With 1,000 customers and a
+skewed default rate, plain accuracy is a misleading target — a model that never
+predicts default scores well on it — which is why balanced accuracy is the
+figure reported above.
 
 ## Technologies Used
 - Python
 - Libraries: Pandas, NumPy, Matplotlib, Plotly Express, PyTorch, ray.tune
 
-## Installation and Usage
-To replicate the analysis:
-1. Install Python and the necessary libraries.
-2. Clone the GitHub repository containing the project.
-3. Run the Jupyter notebooks to execute the data analysis and model training.
+---
 
-## License
-This project is made available under standard open-source licenses and is intended for educational purposes as part of data science coursework.
+[← Portfolio index](../../../README.md)

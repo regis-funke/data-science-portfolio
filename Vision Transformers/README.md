@@ -43,10 +43,6 @@ This section includes two machine learning projects that use Vision Transformers
 - [View Notebook 1](https://github.com/regis-funke/expos-/blob/main/Vision%20Transformers/object_identification/ViT_object_ident_pytorch_dementia.ipynb)
 - [View Notebook 2](https://github.com/regis-funke/expos-/blob/main/Vision%20Transformers/object_identification/ViT_object_ident_pytorch_snacks.ipynb)
 
-## Installation and Usage
-- Clone the repository to access the projects.
-- Install required dependencies: PyTorch, PyTorch Lightning, Transformers, Torchvision, Numpy, Sklearn.
-- Run the Jupyter notebooks or Python scripts to train and evaluate the models.
+---
 
-## License
-All projects in this directory are open-source and available under standard open-source licenses.
+[← Portfolio index](../README.md)

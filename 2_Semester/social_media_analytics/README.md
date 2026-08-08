@@ -27,14 +27,9 @@ An analytical project aimed at examining the communications of the German parlia
 ## Technologies Used Across Projects
 - Python, NumPy, Pandas, BeautifulSoup, Gensim, NLTK, Matplotlib, Plotly Express, pyLDAvis, Requests, Spacy, WordCloud.
 
-## Usage
-To replicate these analyses:
-1. Install Python along with the required libraries.
-2. Clone the respective repositories for each project.
-3. Execute the provided Python scripts or Jupyter notebooks as per project requirements.
-
-## Licensing
-Both projects are open-source, intended for educational and research purposes under standard open-source licenses.
-
 ### Note
 These projects demonstrate diverse applications in data science, ranging from natural language processing to political data analysis. For in-depth insights, especially in political communication analysis, consultation with a domain expert is recommended.
+
+---
+
+[← Portfolio index](../../README.md)

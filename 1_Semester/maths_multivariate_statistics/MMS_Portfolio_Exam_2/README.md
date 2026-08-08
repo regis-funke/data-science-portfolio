@@ -32,10 +32,6 @@ This project, commissioned by the Halle Tourist-Information, focuses on analyzin
 - Plotly Express
 - Numpy
 
-## Installation and Usage
-1. Clone the repository to your local machine.
-2. Ensure that Python and the required libraries are installed.
-3. Run the Jupyter Notebooks or Python scripts to view the analysis and results.
+---
 
-## Acknowledgements
-Special thanks to the Halle Tourist-Information for providing the motivation for this project and to the providers of the Saaleaue weather station data.
+[← Portfolio index](../../../README.md)

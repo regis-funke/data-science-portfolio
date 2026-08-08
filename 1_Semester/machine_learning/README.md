@@ -32,13 +32,10 @@ Python, Pandas, Plotly Express, Scikit-Learn.
 
 ## General Information
 
-### Installation and Usage
-- Ensure Python and necessary libraries are installed.
-- Clone the repository to your local machine.
-- Run the Jupyter Notebooks or Python scripts to view the analysis and results in each project.
+## Data source
 
-### License
-Both projects are open-source, available under standard open-source licenses.
+UCI Machine Learning Repository.
 
-### Acknowledgements
-Special thanks to the data providers, including the UCI Machine Learning Repository, and the supportive community resources that guided the understanding of complex machine learning algorithms.
+---
+
+[← Portfolio index](../../README.md)

@@ -34,22 +34,6 @@ The data is sourced from the Happy Planet Index website and includes variables l
   - `Task3.R`: Script for mapping HPI data on a world map.
   - `Task4.R`: Script for visualizing HPI distribution per continent.
 
-## Usage
+---
 
-Each script in the `R Scripts` folder corresponds to a specific task. Run these scripts in R to generate the visualizations. The scripts contain detailed comments explaining each step of the analysis.
-
-## Contributing
-
-Contributions to enhance the project are welcome. Please fork the repository and submit a pull request for review.
-
-## License
-
-This project is open-source and available under the MIT License.
-
-## Contact
-
-For any queries or suggestions, please reach out to Regis Funke at [regisfunke@example.com](mailto:regisfunke@example.com).
-
-## Acknowledgements
-
-Special thanks to the Happy Planet Index community for providing an insightful dataset that enables a deeper understanding of global well-being beyond economic metrics.
+[← Portfolio index](../../../README.md)

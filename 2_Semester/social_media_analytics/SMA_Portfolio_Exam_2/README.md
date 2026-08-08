@@ -23,14 +23,9 @@ This project analyzes the communications behavior of the German parliament, focu
 - Python
 - Libraries: NumPy, Pandas, BeautifulSoup, Gensim, NLTK, Matplotlib, Plotly Express, pyLDAvis
 
-## Installation and Usage
-To replicate this analysis:
-1. Clone the GitHub repository containing the project.
-2. Install Python and the necessary libraries.
-3. Execute the provided Jupyter notebooks to perform the analysis steps.
-
-## License
-This project is open-source and available for educational and research purposes.
-
 ## Note
 The project aims to provide insights into political communications by analyzing topics in press releases. For a more detailed understanding, a domain specialist's review is recommended.
+
+---
+
+[← Portfolio index](../../../README.md)

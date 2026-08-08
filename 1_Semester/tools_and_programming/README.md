@@ -30,14 +30,6 @@ Commissioned by the Halle Tourist-Information, this project analyzes local weath
 ### Technologies
 Python, Pandas, Scikit-learn, Plotly Express, Numpy.
 
-## General Installation and Usage
+---
 
-1. Ensure Python and necessary libraries are installed.
-2. Clone the repository.
-3. Run the Jupyter Notebooks or Python scripts for each project.
-
-## License
-These projects are open-source and available under standard open-source licenses.
-
-## Acknowledgements
-Special thanks to the instructors and course materials that provided foundational knowledge for these analyses, and to the Halle Tourist-Information for their collaboration in the weather pattern analysis project.
+[← Portfolio index](../../README.md)

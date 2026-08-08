@@ -28,19 +28,6 @@ This directory contains a diverse array of projects completed in the second seme
 - **Key Features**: Data scraping, text mining, sentiment analysis, user interaction modeling.
 - **Technologies**: Python, NumPy, Pandas, BeautifulSoup, Gensim, NLTK, Matplotlib, Plotly Express.
 
-## Installation and Usage
-- To replicate the analysis for any project:
-  1. Ensure Python and the required libraries are installed.
-  2. Clone the repository and navigate to the respective project directory (`application_project`, `data_mining`, `deep_learning`, or `social_media_analytics`).
-  3. Run the Python scripts or Jupyter notebooks as per the project requirements.
+---
 
-## License
-All projects in this directory are open-source, available under standard open-source licenses, and intended for educational purposes as part of a data science coursework.
-
-## Contributing
-Contributions, suggestions, and improvements to these projects are welcome. Please fork the repository and submit a pull request for review.
-
-## Acknowledgements
-Special thanks to instructors, peers, and data providers who contributed to the resources and datasets used in these projects.
-
-For more detailed information and analyses, please refer to the README files and content within each project's subdirectory.
+[← Portfolio index](../README.md)

@@ -37,17 +37,10 @@ This project focuses on analyzing global trade statistics using the United Natio
 - Plotly Express for data visualization
 - Itertools and Time for handling multiple requests
 
-## Installation and Usage
+## Data source
 
-1. Ensure Python 3.x is installed on your system.
-2. Install required libraries: `pandas`, `plotly`.
-3. Clone this repository and navigate to the project directory.
-4. Run the Python scripts to replicate the analysis or use the functions for custom data retrieval.
+United Nations Comtrade database.
 
-## License
+---
 
-This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
-
-## Acknowledgements
-
-Special thanks to the United Nations Comtrade database for providing the data used in this analysis.
+[← Portfolio index](../../../README.md)

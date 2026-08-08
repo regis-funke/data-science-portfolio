@@ -31,13 +31,6 @@ The project includes several key analyses:
 - Node2Vec for generating node embeddings.
 - Matplotlib and community packages for visualization and community detection.
 
-## Installation and Usage
-1. Install Python along with libraries: NetworkX, Node2Vec, RandomForestClassifier, Matplotlib, and community.
-2. Clone this repository and navigate to the project directory.
-3. Run the Python scripts to perform the analysis and view the results.
+---
 
-## Contributing
-Contributions to enhance the project are welcome. Please fork the repository and submit a pull request for review.
-
-## License
-This project is open-source and available under standard open-source licenses.
+[← Portfolio index](../../../README.md)

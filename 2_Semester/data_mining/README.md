@@ -16,7 +16,7 @@ This project delves into the realm of frequent itemset mining and association ru
 ### Technologies
 Python, Pandas, Numpy, MLxtend, Plotly Express, Timeit.
 
-[More about this project](./Frequent_Itemset_Mining_and_Association_Rule_Learning_Project/README.md)
+[More about this project](./DM_Portfolio_Exam_1/README.md)
 
 ## 2. European Road Network Analysis for Logistics Center Location
 
@@ -33,13 +33,8 @@ This project analyzes a European road network to identify strategic locations fo
 ### Technologies
 Python, NetworkX, RandomForestClassifier, Node2Vec, Matplotlib, community package.
 
-[More about this project](./European_Road_Network_Analysis_for_Logistics_Center_Location/README.md)
+[More about this project](./DM_Portfolio_Exam_2/README.md)
 
-## Installation and Usage
-Each project has its own set of dependencies and installation instructions. Please refer to the individual project READMEs for detailed guidance.
+---
 
-## Contributing
-Contributions, suggestions, and improvements are welcome for both projects. Please follow the standard procedure of forking the repository and submitting a pull request.
-
-## License
-Both projects are open-source and available under standard open-source licenses.
+[← Portfolio index](../../README.md)
