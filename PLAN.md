@@ -167,5 +167,5 @@ After each phase, write 2–3 sentences answering:
 - [x] Phase 2 — ingestion ← the heart of it
 - [x] Phase 3 — generation ← MVP
 - [x] Phase 4 — eval + README + publish
-- [ ] Phase 5 — FastAPI
+- [x] Phase 5 — FastAPI
 - [ ] Phase 6 — LangGraph agent

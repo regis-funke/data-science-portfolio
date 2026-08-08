@@ -132,6 +132,42 @@ I don't know.
 The second answer is the point. The model knows the capital of Portugal
 perfectly well; the corpus does not contain it, so it declines.
 
+## API
+
+```bash
+uvicorn src.api:app --reload      # http://127.0.0.1:8000/docs
+```
+
+`POST /ask` with `{"question": "...", "k": 4}` returns:
+
+```json
+{
+  "answer": "BERT's two pre-training tasks are Masked Language Model (Masked LM) and Next Sentence Prediction (NSP) (source: [BERT-...pdf p.4]).",
+  "sources": [
+    {"document": "BERT-...pdf", "page": "4", "score": 0.6181},
+    {"document": "BERT-...pdf", "page": "3", "score": 0.6968}
+  ],
+  "retrieval_ms": 459,
+  "generation_ms": 1464
+}
+```
+
+**Sources are built from the retrieved chunks' metadata, not parsed out of the
+answer.** The eval runs caught the model dropping page numbers and once
+inventing the range `p.2-3` by merging two chunks — acceptable in prose, useless
+as an API contract. Retrieval already knows which chunks it returned.
+
+Returning the distance score has a use that only became clear once it ran: it
+makes a refusal verifiable. A corpus question retrieves at distances around
+0.62–0.79, while "what is the capital of Portugal?" retrieves at 1.59–1.75. A
+caller can see that nothing relevant was found, rather than having to trust the
+wording of the answer.
+
+The store and LLM client are built once in a `lifespan` handler, so a missing
+`chroma_db/` fails at startup rather than as a 500 on the first request. `k` is
+bounded to 1–10 — it is the one parameter a caller could use to run up the
+OpenAI bill.
+
 ## Design decisions
 
 Measured on a ten-question eval set (`eval_questions.md`) with expected answers
@@ -251,7 +287,8 @@ rag_demo/
 ├── src/
 │   ├── ingest.py         # load -> clean -> chunk -> embed -> store
 │   ├── query.py          # retrieval preview + retrieve-then-answer chain
-│   └── evaluate.py       # sweep configurations, write a graded report
+│   ├── evaluate.py       # sweep configurations, write a graded report
+│   └── api.py            # FastAPI wrapper: POST /ask
 ├── eval_questions.md     # eval set, rubric, results, findings
 ├── eval_results/         # generated reports, one per sweep
 ├── chroma_db/            # vector store (gitignored, rebuildable)
