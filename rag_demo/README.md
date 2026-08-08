@@ -132,6 +132,94 @@ I don't know.
 The second answer is the point. The model knows the capital of Portugal
 perfectly well; the corpus does not contain it, so it declines.
 
+## API
+
+```bash
+uvicorn src.api:app --reload      # http://127.0.0.1:8000/docs
+```
+
+`POST /ask` with `{"question": "...", "k": 4}` returns:
+
+```json
+{
+  "answer": "BERT's two pre-training tasks are Masked Language Model (Masked LM) and Next Sentence Prediction (NSP) (source: [BERT-...pdf p.4]).",
+  "sources": [
+    {"document": "BERT-...pdf", "page": "4", "score": 0.6181},
+    {"document": "BERT-...pdf", "page": "3", "score": 0.6968}
+  ],
+  "retrieval_ms": 459,
+  "generation_ms": 1464
+}
+```
+
+**Sources are built from the retrieved chunks' metadata, not parsed out of the
+answer.** The eval runs caught the model dropping page numbers and once
+inventing the range `p.2-3` by merging two chunks — acceptable in prose, useless
+as an API contract. Retrieval already knows which chunks it returned.
+
+Returning the distance score has a use that only became clear once it ran: it
+makes a refusal verifiable. A corpus question retrieves at distances around
+0.62–0.79, while "what is the capital of Portugal?" retrieves at 1.59–1.75. A
+caller can see that nothing relevant was found, rather than having to trust the
+wording of the answer.
+
+The store and LLM client are built once in a `lifespan` handler, so a missing
+`chroma_db/` fails at startup rather than as a 500 on the first request. `k` is
+bounded to 1–10 — it is the one parameter a caller could use to run up the
+OpenAI bill.
+
+## Chain vs. agent
+
+```bash
+python src/agent.py     # runs four questions through both, side by side
+```
+
+The chain has retrieval wired in structurally — every question triggers a search,
+because that is what the pipe does. The agent gets retrieval as a *tool* and
+decides whether to call it, how to word the query, and whether one call was
+enough. Searches per question, measured:
+
+| Question | Chain | Agent |
+|---|---|---|
+| "Hi, how are you?" | 1 | **0** |
+| LoRA rank | 1 | 1, reworded to `LoRA paper rank sufficient for adapting Wq and Wv` |
+| BERT vs GPT objectives, and what are the two tasks | 1 | **2** — `BERT pre-training objective`, then `GPT pre-training objective` |
+| "What is the capital of Portugal?" | 1 | **0** |
+
+Two things the agent does that the chain cannot. It **skips retrieval** when the
+question isn't about the corpus — the chain answers "I don't know" to a greeting
+after retrieving four irrelevant chunks. And it **decomposes** a compound
+question into two searches, which is the multi-query retrieval the eval work
+pointed at, arrived at without being engineered.
+
+### What it cost
+
+Giving the model discretion over retrieval is the same as giving it discretion
+to answer without retrieving. Asked for the capital of Portugal, **gpt-4o-mini
+skipped the search and answered "Lisbon"** — through three increasingly explicit
+system prompts, ending with a flat instruction never to answer a factual
+question from its own knowledge.
+
+Prompting did not fix it. A stronger model did: gpt-4o, same prompt and tools,
+declined. So the agent runs on gpt-4o while the chain stays on gpt-4o-mini,
+and the reason is worth stating plainly — the chain's groundedness is
+structural, since retrieved context is the only text it ever sees, whereas the
+agent's groundedness is a request that a sufficiently confident model will
+override.
+
+The alternative fix is structural: force a search before the model may answer
+anything that isn't a greeting. That restores the guarantee on a cheap model,
+but the greeting starts costing a retrieval and the first row of that table goes
+away. You can have *skips pointless retrieval* or *cannot answer ungrounded* —
+they are the same discretion seen from two sides.
+
+One more measured detail: `create_retriever_tool` defaults `document_prompt` to
+`{page_content}`, handing the agent bare text with no metadata. The first run
+cited "pages 6-7" (invented) and "arXiv:1810.04805v2, page 1" (scraped from the
+arXiv stamp printed inside the chunk). Passing a `document_prompt` that mirrors
+`format_docs` fixed it. The agent was not fabricating so much as guessing from
+the only evidence it had.
+
 ## Design decisions
 
 Measured on a ten-question eval set (`eval_questions.md`) with expected answers
@@ -251,7 +339,9 @@ rag_demo/
 ├── src/
 │   ├── ingest.py         # load -> clean -> chunk -> embed -> store
 │   ├── query.py          # retrieval preview + retrieve-then-answer chain
-│   └── evaluate.py       # sweep configurations, write a graded report
+│   ├── evaluate.py       # sweep configurations, write a graded report
+│   ├── api.py            # FastAPI wrapper: POST /ask
+│   └── agent.py          # LangGraph agent, compared against the chain
 ├── eval_questions.md     # eval set, rubric, results, findings
 ├── eval_results/         # generated reports, one per sweep
 ├── chroma_db/            # vector store (gitignored, rebuildable)
