@@ -1,75 +1,124 @@
-# Data Science Coursework and Personal Projects
-This directory encompasses a comprehensive collection of data science projects and coursework, spanning two semesters, along with personal projects in Vision Transformers, Depth Estimation with Transformers, and Data Science.
+# Data Science Portfolio — Regis Funke
 
-## First Semester Data Sciences Coursework
-### Overview
-This section contains projects and exercises from the first semester of a Data Sciences program, covering various aspects of the field.
+MSc Data Science. I work mostly in Python — retrieval and LLM pipelines, PyTorch,
+and applied evaluation. Open to data roles.
 
-### Directory Structure and Content
-- **Data Visualization (data_viz)**: Projects focusing on visual representations of datasets. Includes analysis of the Happy Planet Index and inflation's impact on consumer spending.
-- **Machine Learning (machine_learning)**: Jupyter Notebooks on machine learning concepts and applications. Features k-Nearest Neighbors, Random Forest algorithms, and credit compliance analysis.
-- **Maths Multivariate Statistics (maths_multivariate_statistics)**: Exercises in multivariate statistics and their applications. Portfolio exams demonstrating multivariate data analysis concepts.
-- **Tools and Programming (tools_and_programming)**: Emphasis on programming tools and techniques for data science. Projects utilizing Python for various data science tasks.
+The four projects below are the ones worth your time; the coursework archive
+underneath shows the range. Each project folder has its own README.
 
-### Installation and Usage
-- Clone the repository to access the materials.
-- Set up the appropriate R/Python environment with necessary libraries.
-- Follow instructions in each project folder for running and analysis.
+---
 
-## Second Semester Data Science Coursework Projects
-### Overview
-This section contains diverse projects from the second semester, exploring various methodologies in data science.
+## Featured
 
-### Directory Structure and Content
-- **OCR Engines Performance Comparison (application_project)**: Comparison of OCR engines under different image conditions. Technologies: Python, Pandas, Matplotlib, Pillow, Pytesseract, EasyOCR, python-doctr.
-- **Frequent Itemset Mining and Association Rule Learning (data_mining)**: Implementing APRIORI and FP-Growth algorithms for data mining. Technologies: Python, Pandas, Numpy, MLxtend.
-- **Neural Network-Based Credit Default Prediction (deep_learning)**: Predicting credit defaults using a neural network in PyTorch. Technologies: Python, Pandas, NumPy, PyTorch, ray.tune.
-- **Social Media Analytics (social_media_analytics)**: Analysis of social media data for sentiment analysis and user behavior. Technologies: Python, NumPy, Pandas, BeautifulSoup, Gensim, NLTK.
+### [RAG over ML papers](rag_demo) · 2026
 
-### Installation and Usage
-- Clone the repository.
-- Ensure Python and required libraries are installed.
-- Navigate to project directories and run scripts or Jupyter notebooks as needed.
+A retrieve-then-answer pipeline over six seminal ML papers — LangChain, Chroma,
+OpenAI. Answers cite their source document, or refuse when the corpus does not
+contain the answer.
 
-## Personal Projects in Vision Transformers and Data Science
-### Overview
-This collection includes experiments with Vision Transformers and machine learning projects for image classification.
+Every setting was chosen by measurement against a ten-question evaluation set
+rather than by default. Swapping the embedding model from
+`text-embedding-3-small` to `-large` took the score from 7/10 to 10/10 — a
+larger gain than chunk size or retrieval depth, both of which had absorbed far
+more tuning effort. Maximal Marginal Relevance was tested and rejected: it
+evicted the chunk that answered the question.
 
-#### Vision Transformer Experiments
-- **Experiment 1**: Custom Head and Partial Relearning of ViT (Caltech 101 Dataset).
-- **Experiment 2**: Full Relearning of ViT (Caltech 101 Dataset).
-- **Experiment 3**: Custom Head with Original ViT (Caltech 101 Dataset). Technologies: PyTorch, PyTorch Lightning, Transformers, PIL, Matplotlib.
+The README documents two conclusions that later evidence overturned, and the
+limitations the eval exposed — including that passing refusal tests does not
+prove groundedness.
 
-#### Data Science Projects
-- **CIFAR-10 Image Classification**: Using ViT for image classification.
-- **Dementia Image Classification**: Classifying images into dementia severity categories. Technologies: Python, PyTorch, PyTorch Lightning, Transformers, Torchvision.
+**Python · LangChain · Chroma · OpenAI API · pypdf**
 
-### Installation and Usage
-- Clone the repository to access the projects.
-- Install Python, PyTorch, and other dependencies.
-- Follow the specific instructions in each project for training and evaluation.
+### [ViT fine-tuning strategies for object detection](Vision%20Transformers/object_detection) · 2023
 
-## Fine-Tuning DPT-DinoV2 on NYU Depth Dataset
-### Overview
-A project focused on fine-tuning the DPT-DinoV2-Small-KITTI model with the DPT-DinoV2-Small-NYU dataset. This project is aimed at understanding the application of Transformer models in depth estimation tasks.
+Three fine-tuning strategies for a Vision Transformer on the same detection
+task, compared on generalised IoU:
 
-#### Key Aspects
-- **Model Adaptation**: Adapting and fine-tuning the pre-trained DPT model to the NYU Depth Dataset.
-- **Custom Dataset and DataLoader**: Crafting a dataset and setting up DataLoaders for depth estimation.
-- **In-Depth Annotations**: Comprehensive explanations and comments throughout the Jupyter Notebook.
+| Strategy | Average GIoU |
+|---|---|
+| Custom head only | 0.830 |
+| Custom head + 2 transformer layers | 0.845 |
+| Full ViT relearning | 0.858 |
 
-### Installation and Usage
-- Clone the repository.
-- Ensure all dependencies are installed.
-- Run the Jupyter Notebook to observe the fine-tuning process.
+Localisation improves monotonically with the number of unfrozen parameters, and
+the gap between freezing everything and retraining everything is under three
+GIoU points — which is the interesting part, given the difference in training
+cost.
 
-#### Conclusion
-This project serves as an insightful exploration into Transformer models and depth estimation. It is an open invitation for further exploration and contribution.
+**Python · PyTorch · PyTorch Lightning · Transformers**
 
-### License
-All projects and coursework in this directory are open-source, available under standard open-source licenses.
+### [OCR engine comparison](2_Semester/application_project) · 2023
 
-### Acknowledgements
-Special thanks to course instructors, peers, data providers, and contributors for the resources and datasets used in these projects.
+Which OCR engine holds up on real photographs of food packaging? 85 images from
+openfoodfacts.org, ground truth built with Abbyy FineReader and corrected by
+hand, accuracy scored by Levenshtein ratio against that ground truth.
 
-**For more detailed information and analyses, please refer to the README files and content within each project's subdirectory.**
+EasyOCR produced the largest share of results above 0.9 similarity. Pytesseract
+was faster but less accurate. docTR degraded fastest as image quality dropped.
+
+The methodology is the point: a benchmark is only as good as its ground truth,
+so most of the work went into building one.
+
+**Python · Pytesseract · EasyOCR · python-doctr · OpenCV · python-Levenshtein**
+
+### [Credit default prediction](2_Semester/deep_learning/DL_Portfolio_Exam_2) · 2023
+
+A neural network for credit default on the South German Credit dataset (1,000
+anonymised customers), extending an earlier classical-ML treatment of the same
+problem. Best balanced validation accuracy 0.766, test accuracy around 70%.
+
+The network beat the previous best model — an SVM — but the honest conclusion
+is that the gain in balanced accuracy was marginal, and does not obviously
+justify the added complexity on a dataset this size. Most of the work went into
+the parts that decide whether a credit model is usable at all: handling class
+imbalance through weight adjustment, architecture search, and hyperparameter
+tuning with `ray.tune`.
+
+**Python · PyTorch · ray.tune · Pandas · Plotly**
+
+---
+
+## Also here
+
+- **[ViT image classification](Vision%20Transformers/object_identification)** —
+  Vision Transformers applied to Caltech 101, CIFAR-10, a snacks dataset and
+  dementia severity classification.
+- **[DPT-DinoV2 depth estimation](Dinov2)** — fine-tuning DPT-DinoV2-Small from
+  KITTI to the NYU Depth dataset, with selective layer unfreezing.
+- **[Social media analytics](2_Semester/social_media_analytics)** — an
+  end-to-end pipeline: scraping German parliament press releases, filtering with
+  LDA, then topic modelling over time. Also word embeddings (Word2Vec,
+  FastText) and a content-based article recommender.
+
+## MSc coursework, 2023
+
+**Second semester** — [data mining](2_Semester/data_mining) (APRIORI and
+FP-Growth) · [deep learning](2_Semester/deep_learning) ·
+[social media analytics](2_Semester/social_media_analytics) ·
+[application project](2_Semester/application_project)
+
+**First semester** — [data visualisation](1_Semester/data_viz) (Happy Planet
+Index in R; inflation and consumer spending) ·
+[machine learning](1_Semester/machine_learning) (kNN, random forests, credit
+compliance) ·
+[multivariate statistics](1_Semester/maths_multivariate_statistics) ·
+[tools and programming](1_Semester/tools_and_programming)
+
+---
+
+## Running the code
+
+Most projects are Jupyter notebooks and can be read directly on GitHub without
+running anything. To execute them:
+
+```bash
+git clone https://github.com/regis-funke/data-science-portfolio.git
+```
+
+Then install that project's dependencies and run its notebook. `rag_demo` is the
+exception — it is a Python package with a pinned `requirements.txt` and its own
+setup instructions.
+
+## Licence
+
+MIT — see [LICENSE](LICENSE).
