@@ -29,6 +29,9 @@ CHROMA_DIR = REPO_ROOT / "chroma_db"
 # time and compared against vectors built at ingestion time, so both have to
 # live in the same vector space. See the note there for why -large.
 EMBEDDING_MODEL = "text-embedding-3-large"
+# The chain is safe on the cheap model: it cannot answer from its own knowledge
+# because retrieved context is the only text it ever sees. Scored 10/10 on the
+# eval set. The agent needs a stronger one - see AGENT_MODEL in agent.py.
 LLM_MODEL = "gpt-4o-mini"
 
 # How many chunks to retrieve. Measured twice on this corpus: k=6 added only

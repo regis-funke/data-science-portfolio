@@ -168,6 +168,58 @@ The store and LLM client are built once in a `lifespan` handler, so a missing
 bounded to 1–10 — it is the one parameter a caller could use to run up the
 OpenAI bill.
 
+## Chain vs. agent
+
+```bash
+python src/agent.py     # runs four questions through both, side by side
+```
+
+The chain has retrieval wired in structurally — every question triggers a search,
+because that is what the pipe does. The agent gets retrieval as a *tool* and
+decides whether to call it, how to word the query, and whether one call was
+enough. Searches per question, measured:
+
+| Question | Chain | Agent |
+|---|---|---|
+| "Hi, how are you?" | 1 | **0** |
+| LoRA rank | 1 | 1, reworded to `LoRA paper rank sufficient for adapting Wq and Wv` |
+| BERT vs GPT objectives, and what are the two tasks | 1 | **2** — `BERT pre-training objective`, then `GPT pre-training objective` |
+| "What is the capital of Portugal?" | 1 | **0** |
+
+Two things the agent does that the chain cannot. It **skips retrieval** when the
+question isn't about the corpus — the chain answers "I don't know" to a greeting
+after retrieving four irrelevant chunks. And it **decomposes** a compound
+question into two searches, which is the multi-query retrieval the eval work
+pointed at, arrived at without being engineered.
+
+### What it cost
+
+Giving the model discretion over retrieval is the same as giving it discretion
+to answer without retrieving. Asked for the capital of Portugal, **gpt-4o-mini
+skipped the search and answered "Lisbon"** — through three increasingly explicit
+system prompts, ending with a flat instruction never to answer a factual
+question from its own knowledge.
+
+Prompting did not fix it. A stronger model did: gpt-4o, same prompt and tools,
+declined. So the agent runs on gpt-4o while the chain stays on gpt-4o-mini,
+and the reason is worth stating plainly — the chain's groundedness is
+structural, since retrieved context is the only text it ever sees, whereas the
+agent's groundedness is a request that a sufficiently confident model will
+override.
+
+The alternative fix is structural: force a search before the model may answer
+anything that isn't a greeting. That restores the guarantee on a cheap model,
+but the greeting starts costing a retrieval and the first row of that table goes
+away. You can have *skips pointless retrieval* or *cannot answer ungrounded* —
+they are the same discretion seen from two sides.
+
+One more measured detail: `create_retriever_tool` defaults `document_prompt` to
+`{page_content}`, handing the agent bare text with no metadata. The first run
+cited "pages 6-7" (invented) and "arXiv:1810.04805v2, page 1" (scraped from the
+arXiv stamp printed inside the chunk). Passing a `document_prompt` that mirrors
+`format_docs` fixed it. The agent was not fabricating so much as guessing from
+the only evidence it had.
+
 ## Design decisions
 
 Measured on a ten-question eval set (`eval_questions.md`) with expected answers
@@ -288,7 +340,8 @@ rag_demo/
 │   ├── ingest.py         # load -> clean -> chunk -> embed -> store
 │   ├── query.py          # retrieval preview + retrieve-then-answer chain
 │   ├── evaluate.py       # sweep configurations, write a graded report
-│   └── api.py            # FastAPI wrapper: POST /ask
+│   ├── api.py            # FastAPI wrapper: POST /ask
+│   └── agent.py          # LangGraph agent, compared against the chain
 ├── eval_questions.md     # eval set, rubric, results, findings
 ├── eval_results/         # generated reports, one per sweep
 ├── chroma_db/            # vector store (gitignored, rebuildable)

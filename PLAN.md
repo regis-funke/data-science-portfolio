@@ -168,4 +168,4 @@ After each phase, write 2–3 sentences answering:
 - [x] Phase 3 — generation ← MVP
 - [x] Phase 4 — eval + README + publish
 - [x] Phase 5 — FastAPI
-- [ ] Phase 6 — LangGraph agent
+- [x] Phase 6 — LangGraph agent
