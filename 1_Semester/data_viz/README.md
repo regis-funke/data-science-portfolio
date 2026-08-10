@@ -1,6 +1,6 @@
-# Data Sciences Coursework Projects
+# Data Visualisation — coursework projects
 
-This repository contains two major projects from a Data Sciences coursework, each focusing on distinct areas of data visualization and analysis. Below are brief overviews of each project.
+Two data visualisation projects from the first semester, both in R. Below are brief overviews of each; both are knitted to HTML and can be read in the browser without installing anything.
 
 ## Project 1: Visualization Challenge
 
@@ -21,7 +21,7 @@ R language with libraries like `tidyverse`, `plotly`, `sf`, and others.
 ### Data Source
 Data is sourced from the [Happy Planet Index website](https://happyplanetindex.org).
 
-## Project 2: RF DV Portfolio Exam 2
+## Project 2: German inflation and consumer spending
 
 **Conducted:** Summer Semester 2022
 

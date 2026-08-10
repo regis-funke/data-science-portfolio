@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project, authored by Regis Funke, focuses on creating insightful and aesthetically pleasing visualizations of the Happy Planet Index (HPI) data. The HPI, an alternative to GDP, measures well-being and sustainability. This repository contains R scripts and data for visualizing various aspects of the HPI, using data from [Happy Planet Index](https://happyplanetindex.org).
+Four visualizations of the Happy Planet Index (HPI), an alternative to GDP that scores countries on well-being and sustainability rather than output. The dataset holds four variables per country, which makes it a good test of whether a chart can carry all of them at once and stay readable. Data from [Happy Planet Index](https://happyplanetindex.org).
 
 ### Key Objectives:
 1. Reveal relationships between multiple variables in the HPI dataset.
@@ -26,13 +26,13 @@ The data is sourced from the Happy Planet Index website and includes variables l
 
 ## Structure
 
+- `RF_challenge.Rmd`: The analysis. All four tasks — setup, the multi-variable
+  relationships for 2019, Zimbabwe's HPI over time, the world map, and the
+  distribution per continent — are in this single R Markdown file.
+- `RF_challenge.html`: The knitted output, with the Plotly charts still
+  interactive. [Read it in the browser](https://regis-funke.github.io/data-science-portfolio/1_Semester/data_viz/DV_Portfolio_Exam_1/RF_challenge.html)
+  without installing anything.
 - `happy-planet-index.csv`: The main dataset used for the analyses.
-- `R Scripts`: Contains all the R scripts to generate visualizations.
-  - `Setup.R`: Script for setting up the environment and loading necessary packages.
-  - `Task1.R`: Script for visualizing relationships between variables for the year 2019.
-  - `Task2.R`: Script for analyzing Zimbabwe's HPI evolution.
-  - `Task3.R`: Script for mapping HPI data on a world map.
-  - `Task4.R`: Script for visualizing HPI distribution per continent.
 
 ---
 

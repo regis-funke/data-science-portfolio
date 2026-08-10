@@ -6,11 +6,11 @@ This project, conducted during the Summer Semester 2022, delves into the analysi
 
 ## Data Source
 
-The data for this project is sourced from DESTATIS ([German Federal Office of Statistics](https://www-genesis.destatis.de/genesis/online)). Data files used include:
+The data for this project is sourced from DESTATIS ([German Federal Office of Statistics](https://www-genesis.destatis.de/genesis/online)). The raw exports are in `raw_data/`:
 - `61111-0004.xml`
 - `61111-0002.xlsx`
 
-These files were processed using a Python notebook (`RF_DV_data_prep.ipynb`) to generate six CSV tables for visualization purposes.
+These files were processed using a Python notebook (`DV_data_prep.ipynb`) to generate six CSV tables for visualization purposes.
 
 ## Dependencies
 
@@ -22,12 +22,14 @@ Ensure these libraries are installed in R before running the scripts.
 
 ## Project Structure
 
-- `RF_DV_data_prep.ipynb`: Python notebook for data preparation.
-- `RF_DV_Portfolio_Exam_2.Rmd`: Main R Markdown file containing all visualizations and analyses.
+- `DV_data_prep.ipynb`: Python notebook for data preparation.
+- `DV_Exam_2.Rmd`: Main R Markdown file containing all visualizations and analyses.
+- `DV_Exam_2.html`: The knitted output, with the Plotly charts still interactive.
+  [Read it in the browser](https://regis-funke.github.io/data-science-portfolio/1_Semester/data_viz/DV_Portfolio_Exam_2/DV_Exam_2.html).
 
 ### Data Files
 
-After preparation in Python, the following CSV files are used in R for visualizations:
+`raw_data/` holds the DESTATIS exports. After preparation in Python, the following CSV files in `preped_data/` are used in R for visualizations:
 - `61111-0004.csv`
 - `61111-0004_pct.csv`
 - `61111-0004_std.csv`

@@ -1,7 +1,7 @@
 # Data Science Portfolio — Regis Funke
 
 MSc Data Science. I work mostly in Python — retrieval and LLM pipelines, PyTorch,
-and applied evaluation. Open to data roles.
+and applied evaluation. Open to GenAI and LLM engineering roles.
 
 The four projects below are the ones worth your time, and the two R analyses
 after them can be read in the browser without running anything. The coursework

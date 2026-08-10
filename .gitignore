@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# R session state
+.Rproj.user
+**/.Rproj.user
+.RData
+**/.RData
+.Rhistory
+**/.Rhistory
+.Ruserdata
+**/.Ruserdata
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Environment / secrets
+.env
+*.env
+
+# Large artefacts
+DS_DL/04_A Multilayer Network for Regression/airbnb.csv
+DS_DL/99_DL_Exam_2/runs
+fasttext
+fasttext.wv.vectors_ngrams.npy
+word2vec
