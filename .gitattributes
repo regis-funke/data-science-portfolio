@@ -1,0 +1,14 @@
+# Language statistics
+#
+# The notebooks here are committed with their executed outputs, so most of their
+# bytes are base64-encoded images rather than source. Counted, they put the
+# repository at roughly 85% "Jupyter Notebook", 15% HTML and 0.12% Python, which
+# is a poor summary of what is in it. Marking them as documentation keeps them
+# fully browsable and diffable; it only stops them driving the language bar.
+*.ipynb linguist-documentation
+
+# Exported notebooks, not hand-written source.
+*.html linguist-generated
+
+# Pickled data artefacts from the social media analytics coursework.
+*.pkl linguist-vendored
