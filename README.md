@@ -3,8 +3,9 @@
 MSc Data Science. I work mostly in Python — retrieval and LLM pipelines, PyTorch,
 and applied evaluation. Open to data roles.
 
-The four projects below are the ones worth your time; the coursework archive
-underneath shows the range. Each project folder has its own README.
+The four projects below are the ones worth your time, and the two R analyses
+after them can be read in the browser without running anything. The coursework
+archive underneath shows the range. Each project folder has its own README.
 
 ---
 
@@ -75,6 +76,36 @@ imbalance through weight adjustment, architecture search, and hyperparameter
 tuning with `ray.tune`.
 
 **Python · PyTorch · ray.tune · Pandas · Plotly**
+
+---
+
+## Read in the browser — data visualisation in R
+
+Both are knitted to HTML and served through GitHub Pages, so the Plotly charts
+stay interactive and nothing needs to be installed to look at them.
+
+### [Well-being against ecological footprint: the Happy Planet Index](https://regis-funke.github.io/data-science-portfolio/1_Semester/data_viz/DV_Portfolio_Exam_1/RF_challenge.html) · 2022
+
+The Happy Planet Index scores countries on well-being and sustainability rather
+than output, which makes it a good test of whether a visualisation can hold four
+variables at once without becoming unreadable. Four views: the relationships
+between HPI variables, Zimbabwe's trajectory over time, a world map under a
+chosen projection, and the distribution per continent.
+
+[Source](1_Semester/data_viz/DV_Portfolio_Exam_1) · **R · tidyverse · ggplot2 · Plotly · sf · rnaturalearth · GGally**
+
+### [German inflation and consumer spending since 1991](https://regis-funke.github.io/data-science-portfolio/1_Semester/data_viz/DV_Portfolio_Exam_2/DV_Exam_2.html) · 2022
+
+Consumer price index since 1992, month-by-month inflation rates, and how price
+development differs across spending categories — some rising steadily, others
+cyclical. The interesting comparison is between categories like transport and
+education, because the aggregate rate hides how differently it lands depending
+on what a household actually spends money on.
+
+Mixed toolchain by design: the DESTATIS XML and XLSX exports are prepared in a
+Python notebook, then visualised in R.
+
+[Source](1_Semester/data_viz/DV_Portfolio_Exam_2) · **R · tidyverse · Plotly · Python (pandas)**
 
 ---
 
