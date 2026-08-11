@@ -3,10 +3,13 @@
 MSc Data Science. I work mostly in Python — retrieval and LLM pipelines, PyTorch,
 and applied evaluation. Open to GenAI and LLM engineering roles.
 
-This repository is the index. The current work lives in its own repo, linked
-first below; the projects after it are the ones worth your time here, the two R
-analyses can be read in the browser without running anything, and the coursework
-archive underneath shows the range.
+**This repository is the index and the archive.** Current work has its own repo
+and is linked first below. What remains here is the M.Sc. and thesis-era work,
+2022–2023: three projects worth reading in full, two R analyses that open in the
+browser without installing anything, and the coursework underneath for range.
+
+Every folder has its own README, and all of them render as pages at
+[regis-funke.github.io/data-science-portfolio](https://regis-funke.github.io/data-science-portfolio/).
 
 ---
 
@@ -29,7 +32,7 @@ documented rather than quietly corrected.
 
 ---
 
-## Featured
+## Featured — the three worth reading in full
 
 ### [ViT fine-tuning strategies for object detection](Vision%20Transformers/object_detection) · 2023
 
@@ -140,18 +143,22 @@ compliance) ·
 
 ## Running the code
 
-Everything in this repository is a Jupyter notebook or an R Markdown file, and
-can be read directly on GitHub without running anything. To execute them:
+Almost everything here is a Jupyter notebook or an R Markdown file, committed
+with its outputs, so it can be read on GitHub without running anything. That is
+deliberate — the outputs are what make a notebook readable.
+
+To execute them:
 
 ```bash
 git clone https://github.com/regis-funke/data-science-portfolio.git
 ```
 
-Then install that project's dependencies and run its notebook.
+Then install that project's dependencies and run its notebook. There is no
+repository-wide environment; each project names what it needs.
 
-The current LLM work is a Python package with a pinned `requirements.txt` and
-its own setup instructions, in
-[its own repository](https://github.com/regis-funke/rag-eval-lab).
+The current LLM work is a proper Python package with a pinned
+`requirements.txt`, a FastAPI service and its own setup instructions, in
+[rag-eval-lab](https://github.com/regis-funke/rag-eval-lab).
 
 ## Licence
 
