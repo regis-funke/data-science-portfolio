@@ -1,8 +1,0 @@
-.env
-.venv/
-chroma_db/
-eval_stores/
-__pycache__/
-data/
-.DS_Store
-.vscode/

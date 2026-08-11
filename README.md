@@ -3,32 +3,33 @@
 MSc Data Science. I work mostly in Python — retrieval and LLM pipelines, PyTorch,
 and applied evaluation. Open to GenAI and LLM engineering roles.
 
-The four projects below are the ones worth your time, and the two R analyses
-after them can be read in the browser without running anything. The coursework
-archive underneath shows the range. Each project folder has its own README.
+This repository is the index. The current work lives in its own repo, linked
+first below; the projects after it are the ones worth your time here, the two R
+analyses can be read in the browser without running anything, and the coursework
+archive underneath shows the range.
+
+---
+
+## Current work — in its own repository
+
+### [→ rag-eval-lab](https://github.com/regis-funke/rag-eval-lab) · 2026
+
+**RAG over ML papers, with every setting decided by measurement.** A
+retrieve-then-answer pipeline over six seminal ML papers — LangChain, LangGraph,
+Chroma, FastAPI, OpenAI. Answers cite their source document and page, or refuse
+when the corpus does not contain the answer.
+
+Swapping the embedding model from `text-embedding-3-small` to `-large` took the
+eval score from 7/10 to 10/10 — a larger gain than chunk size or retrieval depth,
+both of which had absorbed far more tuning effort. Maximal Marginal Relevance
+was tested and rejected. Two conclusions that later evidence overturned are
+documented rather than quietly corrected.
+
+**Python · LangChain · LangGraph · Chroma · FastAPI · OpenAI API**
 
 ---
 
 ## Featured
-
-### [RAG over ML papers](rag_demo) · 2026
-
-A retrieve-then-answer pipeline over six seminal ML papers — LangChain, Chroma,
-OpenAI. Answers cite their source document, or refuse when the corpus does not
-contain the answer.
-
-Every setting was chosen by measurement against a ten-question evaluation set
-rather than by default. Swapping the embedding model from
-`text-embedding-3-small` to `-large` took the score from 7/10 to 10/10 — a
-larger gain than chunk size or retrieval depth, both of which had absorbed far
-more tuning effort. Maximal Marginal Relevance was tested and rejected: it
-evicted the chunk that answered the question.
-
-The README documents two conclusions that later evidence overturned, and the
-limitations the eval exposed — including that passing refusal tests does not
-prove groundedness.
-
-**Python · LangChain · Chroma · OpenAI API · pypdf**
 
 ### [ViT fine-tuning strategies for object detection](Vision%20Transformers/object_detection) · 2023
 
@@ -121,7 +122,7 @@ Python notebook, then visualised in R.
   LDA, then topic modelling over time. Also word embeddings (Word2Vec,
   FastText) and a content-based article recommender.
 
-## MSc coursework, 2023
+## MSc coursework archive, 2023
 
 **Second semester** — [data mining](2_Semester/data_mining) (APRIORI and
 FP-Growth) · [deep learning](2_Semester/deep_learning) ·
@@ -139,16 +140,18 @@ compliance) ·
 
 ## Running the code
 
-Most projects are Jupyter notebooks and can be read directly on GitHub without
-running anything. To execute them:
+Everything in this repository is a Jupyter notebook or an R Markdown file, and
+can be read directly on GitHub without running anything. To execute them:
 
 ```bash
 git clone https://github.com/regis-funke/data-science-portfolio.git
 ```
 
-Then install that project's dependencies and run its notebook. `rag_demo` is the
-exception — it is a Python package with a pinned `requirements.txt` and its own
-setup instructions.
+Then install that project's dependencies and run its notebook.
+
+The current LLM work is a Python package with a pinned `requirements.txt` and
+its own setup instructions, in
+[its own repository](https://github.com/regis-funke/rag-eval-lab).
 
 ## Licence
 
